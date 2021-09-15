@@ -2,7 +2,7 @@
 {
     class GenericType
     {
-        public int FindMax(int num1,int num2,int num3)
+        public static int FindMax(int num1,int num2,int num3)
         {
             if(num1 > num2 && num1 > num3)
             {
@@ -41,6 +41,36 @@
                 return -1;
             }
 
+        }
+
+        public string FindMax(string firstString,string secondString, string thirdString)
+        {
+            if (firstString.CompareTo(secondString) > 0 && firstString.CompareTo(thirdString)>0 ||
+                firstString.CompareTo(secondString) >= 0 && firstString.CompareTo(thirdString) > 0 ||
+                firstString.CompareTo(secondString) > 0 && firstString.CompareTo(thirdString) >= 0 
+                )
+            {
+                return firstString;
+            }
+            else if(secondString.CompareTo(firstString) > 0 && secondString.CompareTo(thirdString) > 0 ||
+                secondString.CompareTo(firstString) >= 0 && secondString.CompareTo(thirdString) > 0 ||
+                secondString.CompareTo(firstString) > 0 && secondString.CompareTo(thirdString) >= 0
+                )
+            {
+                return secondString;
+            }
+            else if (thirdString.CompareTo(firstString) > 0 && thirdString.CompareTo(secondString) > 0 ||
+                thirdString.CompareTo(firstString) >= 0 && thirdString.CompareTo(secondString) > 0 ||
+                thirdString.CompareTo(firstString) > 0 && secondString.CompareTo(secondString) >= 0
+                )
+            {
+                return thirdString;
+            }
+            else
+            {
+                return "all string are same";
+            }
+                
         }
     }
 }
