@@ -1,76 +1,31 @@
-﻿namespace GenericDatatype
+﻿using System;
+using System.Collections.Generic;
+
+namespace GenericDatatype
 {
-    class GenericType
+    class GenericType<T> where T : IComparable
     {
-        public static int FindMax(int num1,int num2,int num3)
-        {
-            if(num1 > num2 && num1 > num3)
-            {
-                return num1;
-            }
-            else if (num2 > num1 && num2 > num3)
-            {
-                return num2;
-            }
-            else if (num3 > num2 && num3 > num1)
-            {
-                return num3;
-            }
-            else
-            {
-                return -1;
-            }
-            
-        }
-        public float FindMax(float num1, float num2, float num3)
-        {
-            if (num1 > num2 && num1 > num3)
-            {
-                return num1;
-            }
-            else if (num2 > num1 && num2 > num3)
-            {
-                return num2;
-            }
-            else if (num3 > num2 && num3 > num1)
-            {
-                return num3;
-            }
-            else
-            {
-                return -1;
-            }
+        public T[] value;
 
-        }
-
-        public string FindMax(string firstString,string secondString, string thirdString)
+        public GenericType(T[] value)
         {
-            if (firstString.CompareTo(secondString) > 0 && firstString.CompareTo(thirdString)>0 ||
-                firstString.CompareTo(secondString) >= 0 && firstString.CompareTo(thirdString) > 0 ||
-                firstString.CompareTo(secondString) > 0 && firstString.CompareTo(thirdString) >= 0 
-                )
-            {
-                return firstString;
-            }
-            else if(secondString.CompareTo(firstString) > 0 && secondString.CompareTo(thirdString) > 0 ||
-                secondString.CompareTo(firstString) >= 0 && secondString.CompareTo(thirdString) > 0 ||
-                secondString.CompareTo(firstString) > 0 && secondString.CompareTo(thirdString) >= 0
-                )
-            {
-                return secondString;
-            }
-            else if (thirdString.CompareTo(firstString) > 0 && thirdString.CompareTo(secondString) > 0 ||
-                thirdString.CompareTo(firstString) >= 0 && thirdString.CompareTo(secondString) > 0 ||
-                thirdString.CompareTo(firstString) > 0 && secondString.CompareTo(secondString) >= 0
-                )
-            {
-                return thirdString;
-            }
-            else
-            {
-                return "all string are same";
-            }
-                
+            this.value = value;
+        }
+        public T[] Sort(T[] value)
+        {
+            Array.Sort(value);
+            return value;
+        }
+        public T maxValue(params T[] values)
+        {
+            var sortedValue = Sort(values);
+            return sortedValue[^1];
+        }
+        public void PrintMaxValue()
+        {
+            var max = maxValue(this.value);
+            Console.WriteLine("Maximum value is {0}", max);
         }
     }
 }
+ 
